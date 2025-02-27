@@ -17,6 +17,8 @@ import com.example.instagramclone.presentation.authentication.LoginScreen
 import com.example.instagramclone.presentation.authentication.SignUpScreen
 import com.example.instagramclone.presentation.SplashScreen
 import com.example.instagramclone.presentation.authentication.AuthenticationViewModel
+import com.example.instagramclone.presentation.main.ProfileScreen
+import com.example.instagramclone.presentation.main.SearchScreen
 import com.example.instagramclone.ui.theme.InstagramCloneTheme
 import com.example.instagramclone.utils.Screens
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +53,13 @@ fun InstaGramCloneApp(navController: NavHostController,authViewModel: Authentica
             SignUpScreen(navController,authViewModel)
         }
         composable(Screens.FeedsScreen.route){
-            FeedsScreen()
+            FeedsScreen(navController)
+        }
+        composable(Screens.ProfileScreen.route){
+            ProfileScreen(navController)
+        }
+        composable(Screens.SearchScreen.route){
+            SearchScreen(navController)
         }
     }
 }

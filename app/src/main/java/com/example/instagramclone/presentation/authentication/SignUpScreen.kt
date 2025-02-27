@@ -3,11 +3,13 @@ package com.example.instagramclone.presentation.authentication
 import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
@@ -35,12 +37,13 @@ import com.example.instagramclone.utils.Screens
 
 @Composable
 fun SignUpScreen(navController: NavHostController, viewModel: AuthenticationViewModel){
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize().systemBarsPadding()){
         Column(modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
 
             val emailState= remember {
                 mutableStateOf("")

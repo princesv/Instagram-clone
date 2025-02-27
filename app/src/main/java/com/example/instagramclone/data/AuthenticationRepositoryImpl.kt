@@ -1,5 +1,6 @@
 package com.example.instagramclone.data
 
+import android.util.Log
 import com.example.instagramclone.domain.model.Users
 import com.example.instagramclone.domain.repository.AuthenticationRepository
 import com.example.instagramclone.utils.Constants
@@ -37,8 +38,11 @@ class AuthenticationRepositoryImpl @Inject constructor(private val auth:Firebase
         try {
             emit(Response.Loading)
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-                operationSuccess=true
+
             }.await()
+            if(auth.currentUser!=null){
+                operationSuccess=true
+            }
             emit(Response.Success(operationSuccess))
         }catch (e:Exception){
             emit(Response.Error(e.message?:"An Unexpected Error"))
@@ -59,9 +63,12 @@ class AuthenticationRepositoryImpl @Inject constructor(private val auth:Firebase
         var operationSuccess=false
         try {
             emit(Response.Loading)
-            auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                operationSuccess=true
+            auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
+
             }.await()
+            if(auth.currentUser!=null){
+                operationSuccess=true
+            }
             if(operationSuccess){
                 val uid=auth.currentUser?.uid
                 val user=Users(

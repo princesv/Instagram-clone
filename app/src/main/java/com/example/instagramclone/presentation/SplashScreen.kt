@@ -31,7 +31,7 @@ fun SplashScreen (navController: NavController, authViewModel: AuthenticationVie
                 OvershootInterpolator(2f).getInterpolation(it)
             })
             )
-        delay(3000)
+        delay(1500)
         if(authValue){
             navController.navigate(Screens.FeedsScreen.route){
                 popUpTo(Screens.LoginScreen.route){
